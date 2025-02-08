@@ -1,0 +1,55 @@
+<div class="account-movements">
+  <h1 class="mb-4">Movimientos de Cuentas</h1>
+
+  <div class="row d-flex justify-content-between">
+    <select
+      class="col-2 custom-select"
+      [(ngModel)]="selectedAccount"
+      (ngModelChange)="selectAccount($event)"
+    >
+      <option [ngValue]="null" disabled selected>Seleccione una cuenta</option>
+      <option *ngFor="let account of accounts" [ngValue]="account">
+        {{ account | accountDescriptor }}
+        {{ account.balance | currency : "MXN" }}
+      </option>
+    </select>
+    <div class="actions col-6">
+      <button class="btn btn-dark mb-2 me-2" (click)="openTransactionModal()">
+        Realizar Operación
+      </button>
+    </div>
+  </div>
+
+  <div class="movements-list">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Identificador</th>
+          <th scope="col">Fecha</th>
+          <th scope="col">Monto</th>
+          <th scope="col">Tipo</th>
+        </tr>
+      </thead>
+      <tbody
+        *ngIf="
+          !selectedAccount?.transactions ||
+          (selectedAccount?.transactions)!.length <= 0
+        "
+      >
+        <tr>
+          <td class="text-center fw-bold fs-4 mt-7" colspan="4">
+            Sin transacciones
+          </td>
+        </tr>
+      </tbody>
+      <tbody *ngIf="(selectedAccount?.transactions)!.length > 0 && selectedAccount != null">
+        <tr *ngFor="let transaction of selectedAccount?.transactions">
+          <td>{{ transaction.transactionId }}</td>
+          <td>{{ transaction.transactionDate | date : "dd/MM/yyyy" }}</td>
+          <td>{{ transaction.amount | currency : "MXN" }}</td>
+          <td>{{ transaction.transactionType | transactionType }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

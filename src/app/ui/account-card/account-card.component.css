@@ -1,0 +1,22 @@
+.account {
+  width: 100%;
+  display: flex;
+  padding: 20px;
+}
+.account .image-container {
+  width: 150px;
+  padding-right: 20px;
+}
+.account .image-container img {
+  width: 100%;
+}
+.account .info {
+  display: flex;
+  flex-direction: column;
+  font-weight: 200;
+  text-transform: uppercase;
+}
+.account .info .balance {
+  font-weight: 600;
+  font-size: 20px;
+}/*# sourceMappingURL=account-card.component.css.map */

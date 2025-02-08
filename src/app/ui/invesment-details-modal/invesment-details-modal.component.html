@@ -1,0 +1,38 @@
+
+  <div class="modal-header">
+    <h5 class="modal-title">Detalles de la Inversión</h5>
+  </div>
+  <div class="modal-body">
+    <p><strong>Inversion ID: </strong>{{ selectedInvestment?.investmentId }}</p>
+    <p><strong>Saldo: </strong>{{ selectedInvestment?.balance| currency:"MXN" }}</p>
+    <p><strong>Pocentaje: </strong>{{ selectedInvestment?.investRate }}</p>
+    <div class="accordion" id="accordionTransaction">
+      <div class="accordion-item">
+          <h2 class="accordion-header">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse" aria-expanded="false" aria-controls="collapse">
+              Transacciones
+              </button>
+          </h2>
+          <div id="collapse"  class="accordion-collapse collapse show" ngbAccordionCollapse data-bs-parent="#accordionTransaction">
+              <div ngbAccordionBody class="overflow-y-auto">
+                <span>
+                  <div *ngIf="!selectedInvestment?.transactions || selectedInvestment?.transactions!.length <= 0; then noTransactionList; else transactionList">
+                  </div>
+                  <ng-template #noTransactionList>
+                    <p>No hay transacciones</p>
+                  </ng-template>
+                    <ng-template #transactionList>
+                        <transaction-list [transactions]="selectedInvestment?.transactions"></transaction-list>
+                    </ng-template>
+                </span>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="activeModal.close()">Cerrar</button><!--
+    <button type="button" class="btn btn-primary">Save changes</button>-->
+  </div>
+
+

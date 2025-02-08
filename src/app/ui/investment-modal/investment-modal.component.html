@@ -1,0 +1,27 @@
+<div class="modal-header">
+  <h4 class="modal-title">Creación de inversion</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="form">
+    <div class="mb-3">
+      <label for="fromAccount" class="form-label">Cuenta de Origen</label>
+      <select class="form-control" formControlName="fromAccount">
+        <option [ngValue]="null" disabled selected>Seleccione una cuenta</option>
+        <option *ngFor="let account of customer?.accounts" [ngValue]="account">
+          {{ account | accountDescriptor }} {{ account.balance | currency:account.currency }}
+        </option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="amount" class="form-label">Importe de la transacción</label>
+      <input type="number" class="form-control" formControlName="amount" min="1" placeholder="$ 0.00" />
+    </div>
+  </form>
+</div>
+
+<div class="modal-footer">
+  <button type="submit" class="btn btn-primary" (click)="submitOperation()" [disabled]="form.invalid">Finalizar</button>
+  <button type="button" class="btn btn-outline-secondary" (click)="activeModal.close('Close click')">Cerrar</button>
+</div>

@@ -1,0 +1,32 @@
+<ul class="list-group list-group-flush p-0">
+  <li class="list-group-item" *ngFor="let transaction of transactions">
+    <div class="row">
+      <div class="col-2 text-center fw-bold">
+        <span>ID</span>
+      </div>
+      <div class="col-3 text-center fw-bold">
+        <span>Tipo</span>
+      </div>
+      <div class="col-4 text-center fw-bold">
+        <span>Fecha</span>
+      </div>
+      <div class="col-3 text-center fw-bold">
+        <span>Monto</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-2 text-center">
+        <span>{{ transaction.transactionId }}</span>
+      </div>
+      <div class="col-4 text-uppercase text-center">
+        <span>{{ transaction.transactionType | transactionType }}</span>
+      </div>
+      <div class="col-3 fst-italic text-center">
+        <span>{{ transaction.transactionDate | date : "dd/MM/yy" }}</span>
+      </div>
+      <div class="col-3 fw-bold text-center">
+        <span>{{ transaction.amount | currency : "MXN" }}</span>
+      </div>
+    </div>
+  </li>
+</ul>

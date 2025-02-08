@@ -1,0 +1,23 @@
+.container-fluid {
+  background-color: #072146;
+}
+.container-fluid .navbar-toggler {
+  border-color: white;
+  color: white;
+}
+.container-fluid .navbar-toggler .navbar-toggler-icon {
+  filter: invert(1);
+}
+.container-fluid a {
+  color: white;
+}
+.container-fluid .nav-link {
+  color: rgb(206, 206, 206);
+}
+.container-fluid .nav-link:hover {
+  color: white;
+}
+
+.module {
+  padding: 20px;
+}/*# sourceMappingURL=app.component.css.map */

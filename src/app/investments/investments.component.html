@@ -1,0 +1,37 @@
+<div class="account-movements">
+  <h1>Inversiones</h1>
+
+  <div class="actions">
+    <button class="btn btn-dark mb-2 me-2" (click)="openTransactionModal()">
+      Crear Inversión
+    </button>
+  </div>
+
+  <!-- <select class="form-select" [(ngModel)]="selectedAccount" (ngModelChange)="selectAccount($event)" >
+    <option [ngValue]="null" disabled selected>Seleccione una cuenta</option>
+    <option *ngFor="let account of accounts" [ngValue]="account">{{ account | accountDescriptor }}
+      {{ account.balance | currency:'MXN' }}</option>
+  </select> -->
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Identificador</th>
+        <th scope="col">Saldo</th>
+        <th scope="col">Porcentaje</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let investment of customer?.investments">
+        <th scope="row">{{ investment.investmentId }}</th>
+        <td>{{ investment.balance | currency:'MXN' }}</td>
+        <td>{{ investment.investRate }} %</td>
+        <td>
+          <button type="button" (click)="openDetailsModal(investment)" class="btn btn-primary me-2">Detalles</button>
+          <!-- <button type="button" class="btn btn-secondary">Operaciones</button> -->
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

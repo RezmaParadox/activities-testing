@@ -1,0 +1,21 @@
+.movements-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  .movement-item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+}
+
+.custom-select {
+  width: 500px;
+  height: 40px;
+  margin-left: 30px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}

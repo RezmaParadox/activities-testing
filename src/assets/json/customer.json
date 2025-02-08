@@ -1,0 +1,40 @@
+{
+  "name": "Gibran",
+  "lastName": "Juarez",
+  "customerId": "5225235",
+  "email": "gibran.juarez@gmail.com",
+  "accounts": [
+    {
+      "accountId": "569856",
+      "customerId": "1225235",
+      "accountName": "Cuenta de ahorros",
+      "balance": 50000,
+      "currency": "MXN",
+      "transactions": []
+    },
+    {
+      "accountId": "784596",
+      "customerId": "1225235",
+      "accountName": "Cuenta Nomina",
+      "balance": 25000,
+      "currency":"MXN",
+      "transactions": []
+    }
+  ],
+  "investments":[
+    {
+      "investmentId": "784596",
+      "balance": 2000,
+      "investRate": 0.5,
+      "transactions": [
+        {
+          "transactionId": "784596",
+          "accountId": "784596",
+          "amount": 2000,
+          "transactionDate": "2022-01-01",
+          "transactionType": "deposit"
+        }
+      ]
+    }
+  ]
+}

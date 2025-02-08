@@ -1,0 +1,22 @@
+.container-fluid {
+  background-color:  #072146;
+  .navbar-toggler{
+    border-color: white;
+    color: white;
+    .navbar-toggler-icon {
+      filter: invert(1);
+    }
+  }
+  a{
+    color: white;
+  }
+  .nav-link{
+    color: rgb(206, 206, 206);
+    &:hover{
+      color: white;
+    }
+  }
+}
+.module {
+  padding: 20px;
+}

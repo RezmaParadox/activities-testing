@@ -1,0 +1,28 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid p-4">
+    <a class="navbar-brand fs-2 fw-bold" href="#">Banca Web</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon color-white"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 fs-5 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/accounts-list" href="#">Cuentas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/movements" href="#">Movimientos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/investments" href="#">Inversiones</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/foreign-exchange" href="#">Intercambio de divisas</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="module">
+  <router-outlet></router-outlet>
+</div>

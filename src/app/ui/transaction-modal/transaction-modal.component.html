@@ -1,0 +1,37 @@
+<div class="modal-header">
+  <h4 class="modal-title">Operación entre cuentas propias</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="form">
+    <div class="mb-3">
+      <label for="fromAccount" class="form-label">Cuenta de Origen</label>
+      <select class="form-control" formControlName="fromAccount">
+        <option [ngValue]="null" disabled selected>Seleccione una cuenta de origen</option>
+        <option *ngFor="let account of customer?.accounts" [ngValue]="account">
+          {{ account | accountDescriptor }} {{ account.balance | currency:account.currency }}
+        </option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="toAccount" class="form-label">Cuenta de Destino</label>
+      <select class="form-control" formControlName="toAccount">
+        <option [ngValue]="null"  disabled selected>Seleccione una cuenta de destino</option>
+        <option [disabled] = "account?.accountId === form.value.fromAccount.accountId" *ngFor="let account of customer?.accounts" [ngValue]="account">
+          {{ account | accountDescriptor }}
+        </option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="amount" class="form-label">Importe de la transacción</label>
+      <input type="number" class="form-control" placeholder="$ 0.00" formControlName="amount" min="1"/>
+    </div>
+  </form>
+</div>
+
+<div class="modal-footer">
+  <button type="submit" class="btn btn-primary" (click)="submitOperation()" [disabled]="form.invalid">Realizar operación</button>
+  <button type="button" class="btn btn-outline-secondary" (click)="activeModal.close('Close click')">Cerrar</button>
+</div>

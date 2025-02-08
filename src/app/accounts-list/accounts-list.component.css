@@ -1,0 +1,17 @@
+.accounts .balance-sum {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding-bottom: 20px;
+}
+.accounts .balance-sum .balance {
+  font-weight: 800;
+}
+.accounts .account-card {
+  cursor: pointer;
+}
+
+.modal-size {
+  max-width: 900px;
+  width: 100%;
+}/*# sourceMappingURL=accounts-list.component.css.map */

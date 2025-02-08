@@ -1,0 +1,47 @@
+<h1>Hola  {{customer | customerName }}  </h1>
+<p class="fs-5">Bienvenido de nuevo</p>
+<div class="accounts">
+  <div class="balance-sum">
+    <span class="fs-5">Saldo total en cuentas</span>
+    <span class="balance fs-4">{{ customer.accounts | accountsBalance | currency}}{{" MXN"}}</span>
+  </div>
+  <account-card class="account-card" *ngFor="let account of customer.accounts" [account]="account"
+    (click)="showDetails(account)"></account-card>
+</div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title">Detalles de la cuenta</h5>
+  </div>
+  <div class="modal-body">
+    <p><strong>Cuenta: </strong>{{ selectedAccount?.accountName }}</p>
+    <p><strong>Balance: </strong>{{ selectedAccount?.balance | currency:selectedAccount?.currency }}</p>
+    <div ngbAccordion id="accordionTransaction">
+      <div ngbAccordionItem="">
+          <h2 ngbAccordionHeader>
+              <button ngbAccordionButton type="button" data-bs-toggle="collapse" data-bs-target="#collapse" aria-expanded="false" aria-controls="collapse">
+              Transacciones
+              </button>
+          </h2>
+          <div id="collapse" ngbAccordionCollapse data-bs-parent="#accordionTransaction">
+              <div ngbAccordionBody class="overflow-y-auto">
+                <span>
+                  <div *ngIf="!selectedAccount?.transactions || selectedAccount?.transactions!.length <= 0; then noTransactionList; else transactionList">
+                  </div>
+                  <ng-template #noTransactionList>
+                    <p>No hay transacciones</p>
+                  </ng-template>
+                    <ng-template #transactionList>
+                        <transaction-list [transactions]="selectedAccount?.transactions"></transaction-list>
+                    </ng-template>
+                </span>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modal.close()">Cerrar</button><!--
+    <button type="button" class="btn btn-primary">Save changes</button>-->
+  </div>
+</ng-template>

@@ -1,0 +1,80 @@
+<div class="foreign-exchange">
+  <h1>Intercambio de divisas</h1>
+
+  <div class="row d-flex align-items-start justify-content-between">
+    <form class="d-flex flex-column col-6 border rounded p-4">
+      <h2 class="mt-4">Consultar divisas</h2>
+      <div>
+        <div class="mb-3">
+          <label for="fromCurrency">Divisa de origen</label>
+          <select class="form-select" id="fromCurrency" [(ngModel)]="fromCurrency" name="fromCurrency">
+            <option [value]="null" disabled selected>Seleccione una divisa</option>
+            <option *ngFor="let currency of currencies" [value]="currency.code">
+              {{ currency | currencyDescriptor }}
+            </option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="toCurrency">Divisa a</label>
+          <select class="form-select" id="toCurrency" [(ngModel)]="toCurrency" name="toCurrency">
+            <option [value]="null" disabled selected>Seleccione una divisa</option>
+            <option *ngFor="let currency of currencies" [value]="currency.code">
+              {{ currency | currencyDescriptor }}
+            </option>
+          </select>
+        </div>
+        <div class="actions">
+          <button class="btn btn-primary w-100 mt-3" (click)="calculate()">Calcular</button>
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col">
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">Resultado</span>
+            <input type="text" class="form-control" [value]="result" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+          </div>
+        </div>
+      </div>
+    </form>
+    <form class="col-6 border rounded p-4">
+      <h2 class="mt-4">Realizar cambio</h2>
+      <div class="d-flex flex-column">
+        <label for="cuenta" class="form-label">Cuenta de Origen</label>
+        <select class="form-select" id="cuenta" [(ngModel)]="account" name="account">
+          <option [ngValue]="null" disabled selected>Selecciona una cuenta</option>
+          <option *ngFor="let account of accounts" [ngValue]="account">
+            {{ account | accountDescriptor }} - {{ account.balance | currency : account.currency }}
+          </option>
+        </select>
+      </div>
+      <div class="mt-3">
+        <label for="amount">Monto</label>
+        <input type="number" class="form-control" id="amount" placeholder="$ 0.00" min="1" [(ngModel)]="amountValue" name="amountValue" />
+      </div>
+      <div class="mt-3">
+        <label for="toCurrencyValue">Divisa a comprar</label>
+        <select class="form-select" id="toCurrencyValue" [(ngModel)]="toCurrencyValue" name="toCurrencyValue">
+          <option [value]="null" disabled selected>Seleccione una divisa</option>
+          <option *ngFor="let currency of currencies" [value]="currency.code">
+            {{ currency | currencyDescriptor }}
+          </option>
+        </select>
+      </div>
+      <div class="actions mt-4">
+        <button class="btn btn-primary w-100" (click)="convert()">Convertir</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<ngb-toast class="toast position-fixed top-0 end-0" *ngIf="showToast" [autohide]="true" (hidden)="showToast = false">
+  <div class="toast-header">
+    <strong class="me-auto">Notificación</strong>
+    <small class="text-body-secondary">Ahora</small>
+    <button type="button" class="btn-close" (click)="showToast = false" aria-label="Close"></button>
+  </div>
+  <div class="toast-body">
+    {{ message }}
+  </div>
+</ngb-toast>
+
