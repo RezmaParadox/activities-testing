@@ -9,7 +9,6 @@
     "test": "ng test",
     "test-selenium": "mocha ./tests/*.spec.js --no-timeouts",
     "test-cucumber": "cucumber-js features/*.feature"
-
   },
   "private": true,
   "dependencies": {

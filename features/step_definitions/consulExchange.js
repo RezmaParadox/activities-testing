@@ -1,6 +1,6 @@
 const { Given, When, Then, After } = require('@cucumber/cucumber');
 const chrome = require('selenium-webdriver/chrome');
-const { Builder, Browser, By } = require('selenium-webdriver');
+const { Builder, until, By } = require('selenium-webdriver');
 const assert = require('assert');
 
 Given('Abrir la aplicación en la ventana de intercambio de divisas', async function (){
@@ -12,8 +12,8 @@ Given('Abrir la aplicación en la ventana de intercambio de divisas', async func
               `--user-data-dir=/tmp/chrome-user-data-${Date.now()}`,
           ))
           .build();
-          
   await driver.get("http://localhost:4200/foreign-exchange");
+
 });
 
 When('Seleccionar la divisa de origen {string}', async function (fromCurrency){
