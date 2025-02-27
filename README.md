@@ -1,3 +1,18 @@
+**DESCRIPCION DEL PROYECTO**
+Proyecto en Angular de una Banca Web, que permite gestionar sus cuentas y realizar operaciones bancarias. Tambien se puede realizar inversiones e intercambios de divisas.
+
+Se implementaron pruebas unitarias y e2e para probar el correcto funcionamiento de la aplicacion.
+Se utilizaron tecnologias como Angular, Typescript, HTML, CSS y SASS. 
+Para las pruebas, Selenium y Cucumber.
+Para la creacion del contenedor se utilizo Docker y Bash para ejecutar los scripts. 
+
+**SCRIPTS Y MENUS DE EJECUCIÓN**
+  En la carpeta scripts se encuentran los scripts y menus de ejecucion: 
+  - menu.sh se encarga de ejecutar el menu principal para ejecutar el proyecto angular y el menu de pruebas, solo es cuestion de ejecutarlo.
+  - menu-docker.sh se encarga de ejecutar el menu principal para ejecutar el proyecto angular y el menu de pruebas dentro de un contenedor de docker. La creacion del contenedor tarda unos minutos. Directamente se ejecuta el menu.sh dentro del contenedor. **Importante:** Debe estar instalado docker y Wsl o en su defecto GitBash.
+
+**EJECUCIÓN DEL DEL PROYECTO**
+
 # Banca
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.6.
